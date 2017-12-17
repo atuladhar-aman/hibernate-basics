@@ -1,0 +1,21 @@
+plugins {
+    id 'net.ltgt.apt' version '0.10' // Gradle support for annotation processing
+}
+
+apply plugin: 'java'
+
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'com.google.guava', name: 'guava', version: '23.5-jre'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.2.12.Final'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    compile 'com.github.v-ladynev:fluent-hibernate-core:0.3.1' // this is used to auto scan packages for entities
+
+
+    compileOnly 'org.projectlombok:lombok:1.16.18' // this is used for @Getter and @Setter
+    apt "org.projectlombok:lombok:1.16.18"
+}
