@@ -1,6 +1,17 @@
 package io.github.atuladhar.aman;
 
+import static org.hibernate.cfg.AvailableSettings.DIALECT;
+import static org.hibernate.cfg.AvailableSettings.FORMAT_SQL;
+import static org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO;
+import static org.hibernate.cfg.AvailableSettings.PASS;
+import static org.hibernate.cfg.AvailableSettings.PHYSICAL_NAMING_STRATEGY;
+import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
+import static org.hibernate.cfg.AvailableSettings.STORAGE_ENGINE;
+import static org.hibernate.cfg.AvailableSettings.URL;
+import static org.hibernate.cfg.AvailableSettings.USER;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -11,7 +22,6 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.AvailableSettings;
 
 /**
  * @author Aman Tuladhar
@@ -47,16 +57,16 @@ public class HibernateUtil {
 
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 final Map<String, String> settings = new HashMap<>();
-                settings.put(AvailableSettings.URL, "jdbc:mysql://localhost:3306/temp_hibernate");
-                settings.put(AvailableSettings.USER, "root");
-                settings.put(AvailableSettings.PASS, "");
-                settings.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQL55Dialect");
-                settings.put(AvailableSettings.HBM2DDL_AUTO, "create-drop");
-                settings.put(AvailableSettings.SHOW_SQL, "true");
-                settings.put(AvailableSettings.FORMAT_SQL, "true");
-                settings.put(AvailableSettings.STORAGE_ENGINE, "innodb");
+                settings.put(URL, "jdbc:mysql://localhost:3306/temp_hibernate");
+                settings.put(USER, "root");
+                settings.put(PASS, "");
+                settings.put(DIALECT, "org.hibernate.dialect.MySQL55Dialect");
+                settings.put(HBM2DDL_AUTO, "create-drop");
+                settings.put(SHOW_SQL, "true");
+                settings.put(FORMAT_SQL, "true");
+                settings.put(STORAGE_ENGINE, "innodb");
 
-                settings.put(AvailableSettings.PHYSICAL_NAMING_STRATEGY, "io.github.atuladhar.aman.SnakeCaseNamingStrategy");
+                settings.put(PHYSICAL_NAMING_STRATEGY, "io.github.atuladhar.aman.SnakeCaseNamingStrategy");
 
                 // Apply settings
                 registryBuilder.applySettings(settings);
@@ -67,7 +77,10 @@ public class HibernateUtil {
                 // Create MetadataSources
                 final MetadataSources sources = new MetadataSources(registry);
                 // autoscan packages for Entities
-                EntityScanner.scanPackages(packageToScan).result().forEach(sources::addAnnotatedClass);
+                final List<Class<?>> result = EntityScanner.scanPackages(packageToScan).result();
+                for (Class<?> aClass : result) {
+                    sources.addAnnotatedClass(aClass);
+                }
 
                 // Create Metadata
                 final Metadata metadata = sources.getMetadataBuilder()

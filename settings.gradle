@@ -15,4 +15,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = '001-persistence'
+rootProject.name = 'Hibernate-Basics'

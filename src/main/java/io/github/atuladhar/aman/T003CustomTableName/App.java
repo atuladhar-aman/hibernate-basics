@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 class App {
 
     public static void main(String[] args) {
-        execute(App.class.getPackage().getName(), session ->
+        execute(
+            App.class.getPackage().getName(), session ->
             {
                 final User user = new User();
                 user.setName("hello");
