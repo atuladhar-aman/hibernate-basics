@@ -1,5 +1,6 @@
 package io.github.atuladhar.aman;
 
+import static com.github.fluent.hibernate.cfg.scanner.EntityScanner.scanPackages;
 import static org.hibernate.cfg.AvailableSettings.DIALECT;
 import static org.hibernate.cfg.AvailableSettings.FORMAT_SQL;
 import static org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO;
@@ -11,11 +12,9 @@ import static org.hibernate.cfg.AvailableSettings.URL;
 import static org.hibernate.cfg.AvailableSettings.USER;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import com.github.fluent.hibernate.cfg.scanner.EntityScanner;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -77,10 +76,9 @@ public class HibernateUtil {
                 // Create MetadataSources
                 final MetadataSources sources = new MetadataSources(registry);
                 // autoscan packages for Entities
-                final List<Class<?>> result = EntityScanner.scanPackages(packageToScan).result();
-                for (Class<?> aClass : result) {
-                    sources.addAnnotatedClass(aClass);
-                }
+                scanPackages(packageToScan)
+                    .result()
+                    .forEach(sources::addAnnotatedClass);
 
                 // Create Metadata
                 final Metadata metadata = sources.getMetadataBuilder()
