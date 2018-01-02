@@ -12,13 +12,13 @@ import lombok.ToString;
  * @author Aman Tuladhar
  * @since 2017-12-31
  */
+@MappedSuperclass
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-
-@MappedSuperclass
 class BaseUser {
     private Character gender;
     private Integer age;

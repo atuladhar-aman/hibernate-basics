@@ -25,7 +25,7 @@ import lombok.ToString;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-abstract class BaseUser {
+class BaseUser {
 
     // becuase this is an entity we need identifier here
     // this means we don't need to add @Id on subclasses

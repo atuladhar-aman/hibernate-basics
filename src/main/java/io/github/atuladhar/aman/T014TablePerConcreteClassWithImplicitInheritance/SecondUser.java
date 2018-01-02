@@ -13,8 +13,9 @@ import lombok.EqualsAndHashCode;
  * @since 2017-12-31
  */
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 class SecondUser extends BaseUser{
     @Id

@@ -12,10 +12,7 @@ class App {
         execute(
             App.class.getPackage().getName(), session ->
             {
-                final User user = new User();
-                user.setName("USER");
-
-                session.save(user);
+                final FirstUser firstUser = session.get(FirstUser.class, 1L);
             }
         );
     }

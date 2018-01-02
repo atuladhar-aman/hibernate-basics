@@ -15,12 +15,13 @@ import lombok.NoArgsConstructor;
  * @since 2017-12-16
  */
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
+
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 @Data
-class User extends BaseUser {
+class FirstUser extends BaseUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
