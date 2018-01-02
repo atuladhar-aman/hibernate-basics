@@ -1,4 +1,4 @@
-package io.github.atuladhar.aman.T014ElementCollectionListOfString;
+package io.github.atuladhar.aman.T99ElementCollectionListOfString;
 
 import static io.github.atuladhar.aman.HibernateUtil.execute;
 

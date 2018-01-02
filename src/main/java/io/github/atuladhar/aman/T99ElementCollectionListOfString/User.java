@@ -1,15 +1,13 @@
-package io.github.atuladhar.aman.T015ElementCollectionCustomTableAndColumnName;
+package io.github.atuladhar.aman.T99ElementCollectionListOfString;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +31,5 @@ class User {
     private String name;
 
     @ElementCollection
-    @CollectionTable(name = "u_addr", joinColumns = @JoinColumn(name = "u_id"))
     private List<String> address = new ArrayList<>(); // hibernate needs this initialization
 }

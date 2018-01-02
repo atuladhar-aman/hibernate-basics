@@ -1,8 +1,6 @@
-package io.github.atuladhar.aman.T015ElementCollectionCustomTableAndColumnName;
+package io.github.atuladhar.aman.T014TablePerConcreteClassWithImplicitInheritance;
 
 import static io.github.atuladhar.aman.HibernateUtil.execute;
-
-import java.util.Arrays;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -14,15 +12,10 @@ class App {
         execute(
             App.class.getPackage().getName(), session ->
             {
-                final User
-                    user = new User();
+                final User user = new User();
                 user.setName("USER");
-                user.setAddress(Arrays.asList("a1", "a2"));
+
                 session.save(user);
-            }, session -> {
-                final User
-                    user = session.get(User.class, 1L);
-                System.out.println(user);
             }
         );
     }
