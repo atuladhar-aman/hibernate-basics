@@ -1,15 +1,16 @@
-package io.github.atuladhar.aman.T98ElementCollectionCustomTableAndColumnName;
+package io.github.atuladhar.aman.T022MappingMap;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,6 +34,8 @@ class User {
     private String name;
 
     @ElementCollection
-    @CollectionTable(name = "u_addr", joinColumns = @JoinColumn(name = "u_id"))
-    private List<String> address = new ArrayList<>(); // hibernate needs this initialization
+    @CollectionTable(name = "map_table")
+    @MapKeyColumn(name = "map_key_column")
+    @Column(name = "column_name")
+    private Map<String, String> sampleMap = new HashMap<>();
 }

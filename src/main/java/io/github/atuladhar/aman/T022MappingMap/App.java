@@ -1,8 +1,6 @@
-package io.github.atuladhar.aman.T98ElementCollectionCustomTableAndColumnName;
+package io.github.atuladhar.aman.T022MappingMap;
 
 import static io.github.atuladhar.aman.HibernateUtil.execute;
-
-import java.util.Arrays;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -17,12 +15,9 @@ class App {
                 final User
                     user = new User();
                 user.setName("USER");
-                user.setAddress(Arrays.asList("a1", "a2"));
+                user.getSampleMap()
+                    .put("k1", "v1");
                 session.save(user);
-            }, session -> {
-                final User
-                    user = session.get(User.class, 1L);
-                System.out.println(user);
             }
         );
     }

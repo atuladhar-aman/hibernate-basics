@@ -1,4 +1,4 @@
-package io.github.atuladhar.aman.T99ElementCollectionListOfString;
+package io.github.atuladhar.aman.T021ElementCollectionCustomTableAndColumnName;
 
 import static io.github.atuladhar.aman.HibernateUtil.execute;
 
@@ -14,14 +14,14 @@ class App {
         execute(
             App.class.getPackage().getName(), session ->
             {
-                final User user = new User();
+                final User
+                    user = new User();
                 user.setName("USER");
-                user.setAddress(Arrays.asList("a1", "a2"));
+                user.setAddress(Arrays.asList("a1", "a2", "a3", "a4"));
                 session.save(user);
             }, session -> {
                 final User user = session.get(User.class, 1L);
-                System.out.println(user);
-                session.delete(user);
+                user.getAddress().remove("a1");
             }
         );
     }
