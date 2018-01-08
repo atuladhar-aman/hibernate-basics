@@ -1,12 +1,13 @@
-package io.github.atuladhar.aman.T020MappingSet;
+package io.github.atuladhar.aman.T029ManyToMany;
 
-    import java.util.HashSet;
-    import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-    import javax.persistence.Entity;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,5 +30,6 @@ class User {
 
     private String name;
 
-    private Set<String> address = new HashSet<>(); // hibernate needs this initialization
+    @ManyToMany
+    private List<Address> addresses = new ArrayList<>();
 }

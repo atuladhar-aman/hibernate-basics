@@ -26,7 +26,7 @@ import lombok.ToString;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "table_identifier")
+@DiscriminatorColumn(name = "dtype")
 abstract class BaseUser {
 
     // becuase this is an entity we need identifier here

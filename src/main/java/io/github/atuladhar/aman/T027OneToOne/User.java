@@ -1,14 +1,13 @@
-package io.github.atuladhar.aman.T020MappingSet;
+package io.github.atuladhar.aman.T027OneToOne;
 
-    import java.util.HashSet;
-    import java.util.Set;
-
-    import javax.persistence.Entity;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,6 +17,7 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,5 +29,6 @@ class User {
 
     private String name;
 
-    private Set<String> address = new HashSet<>(); // hibernate needs this initialization
+    @OneToOne
+    private Address address;
 }

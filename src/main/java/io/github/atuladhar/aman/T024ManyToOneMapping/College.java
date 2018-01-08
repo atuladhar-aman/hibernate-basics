@@ -1,33 +1,30 @@
-package io.github.atuladhar.aman.T020MappingSet;
+package io.github.atuladhar.aman.T024ManyToOneMapping;
 
-    import java.util.HashSet;
-    import java.util.Set;
-
-    import javax.persistence.Entity;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  * @author Aman Tuladhar
- * @since 2017-12-16
+ * @since 2018-01-06
  */
+
 @Entity
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class User {
-
+@Builder
+class College {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
-    private Set<String> address = new HashSet<>(); // hibernate needs this initialization
 }

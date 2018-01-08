@@ -1,14 +1,14 @@
-package io.github.atuladhar.aman.T020MappingSet;
+package io.github.atuladhar.aman.T024ManyToOneMapping;
 
-    import java.util.HashSet;
-    import java.util.Set;
-
-    import javax.persistence.Entity;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,16 +18,18 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    private Set<String> address = new HashSet<>(); // hibernate needs this initialization
+    @ManyToOne
+    @JoinColumn(name = "college_id", nullable = false)
+    private College college;
 }

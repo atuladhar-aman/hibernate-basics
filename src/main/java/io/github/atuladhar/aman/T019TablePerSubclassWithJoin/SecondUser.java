@@ -1,6 +1,5 @@
 package io.github.atuladhar.aman.T019TablePerSubclassWithJoin;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import lombok.AllArgsConstructor;
@@ -13,8 +12,9 @@ import lombok.NoArgsConstructor;
  * @since 2017-12-31
  */
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

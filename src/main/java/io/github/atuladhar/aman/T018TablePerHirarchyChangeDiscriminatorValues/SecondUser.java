@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 @DiscriminatorValue("second_user")
 class SecondUser extends BaseUser {
     private String someProperties;
